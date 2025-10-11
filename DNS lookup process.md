@@ -1,0 +1,9 @@
+The step-by-step DNS lookup process
+
+1. **Request begins:** When you type a domain name into your browser, your computer first checks its own local cache and its operating system's cache for a matching IP address.
+2. **Recursive DNS resolver:** If the address is not in the cache, the query is sent to a recursive DNS resolver. This server, often run by your Internet Service Provider (ISP) or a public service like Google DNS, is responsible for doing all the legwork to find the correct IP address.
+3. **Root name server:** The resolver forwards the request to one of the 13 sets of global root name servers. These servers don't know the IP address for the specific domain, but they know where to find the appropriate top-level domain (TLD) servers.
+4. **TLD name server:** The root server directs the resolver to the TLD server. For a `.com` domain, this would be the `.com` TLD server. This server stores information for all domain names with that common extension and provides a referral to the authoritative name server.
+5. **Authoritative name server:** The resolver finally queries the authoritative name server, which is the final authority for that specific domain (e.g., `example.com`). This server holds the definitive DNS records and returns the correct IP address to the resolver.
+6. **Resolver caches the record:** The recursive resolver caches the IP address it received for a set period of time, defined by the record's "Time to Live" (TTL). This makes subsequent requests for the same domain faster.
+7. **Browser loads the site:** The resolver sends the IP address back to your browser, which then connects to the web server at that address and displays the website.
